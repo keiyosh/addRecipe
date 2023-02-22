@@ -1,7 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
 import React,{useEffect, useState} from 'react';
-class AddRecipe {
+
+class AddRecipe extends React.Component {
+    
   HandleLogin = async (event) => {
     event.preventDefault();
     const login = {
@@ -12,6 +14,7 @@ class AddRecipe {
     try {
         const response = await fetch('https://concierge.cooperstandard.org:8443/api/user/login', login)
         const data = await response.json();
+        console.log(data)
         if (data.message == "Wrong details please check at once") {
             throw new Error("Error with login");
         } else {
